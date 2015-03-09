@@ -1,1 +1,46 @@
-<H1>Welcome Home</H1>
+ 
+
+<script type="x-handlebars-template" id="bikeshare-template">
+  <div class="bikeshare station">
+    <div class="close"></div>
+    <div class="title">{{ title }}</div>
+    <div class="info">
+      <div class="background"></div>
+      <div class="bikes">{{ bikes }}</div>
+      <div class="docks">{{ docks }}</div>
+    </div>
+  </div>
+</script>
+
+<script type="x-handlebars-template" id="metrorail-template">
+  <div class="rail station">
+    <div class="close"></div>
+    <div class="title">{{ title }}</div>
+    <div class="info">
+      {{ #each trains }}
+      <div class="train">
+        <div class="line {{ line }}">{{ line }}</div>
+        <div class="destination">{{ destination }}</div>
+        <div class="time">{{ time }}</div>
+      </div>
+      {{ /each }}
+    </div>
+  </div>
+</script>
+
+<script type="x-handlebars-template" id="metrobus-template">
+  <div class="bus station">
+    <div class="close"></div>
+    <div class="title">{{ title }}</div>
+    <div class="info">
+      {{ #each buses }}
+      <div class="train">
+        <div class="route">{{ route }}</div>
+        <div class="destination">{{ destination }}</div>
+        <div class="time">{{ time }}</div>
+      </div>
+      {{ /each }}
+    </div>
+  </div>
+</script>
+

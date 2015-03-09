@@ -3,7 +3,9 @@ var App = {
   Coordinates: {},
   Views: {},
   Models: {},
-  Ajax: {}
+  Collections: {},
+  Ajax: {},
+  Templates: {}
 }
 
 // Callback function for the geolocation API
@@ -20,5 +22,11 @@ $(document).on("ready", function(){
 
   // HTML5 Geolocation API
   navigator.geolocation.getCurrentPosition( geolocationHandler )
+
+  App.Templates = {
+    bikeshare: Handlebars.compile( $("#bikeshare-template").text() ),
+    rail: Handlebars.compile( $("#metrorail-template").text() ),
+    bus: Handlebars.compile( $("#metrobus-template").text() ),
+  }
 
 });
