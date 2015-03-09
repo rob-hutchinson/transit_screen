@@ -55,6 +55,9 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dotenv (2.0.0)
+    dotenv-rails (2.0.0)
+      dotenv (= 2.0.0)
     erubis (2.7.0)
     execjs (2.4.0)
     globalid (0.3.3)
@@ -176,6 +179,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
+  dotenv-rails
   httparty
   jbuilder (~> 2.0)
   jquery-rails
