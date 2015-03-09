@@ -1,7 +1,5 @@
 class Datarequest
 
-  # include httparty
-
   def self.rail id
     HTTParty.get("https://api.wmata.com/StationPrediction.svc/json/GetPrediction/#{id}?api_key=#{ENV["WMATA_KEY"]}")
   end
