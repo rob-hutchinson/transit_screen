@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   root to: "application#home"
 
   get '/data/:type/:id' => 'data#show', as: 'data'  
-
+  
 end
