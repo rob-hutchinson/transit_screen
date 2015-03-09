@@ -3,15 +3,27 @@ App.Models.Station = Backbone.Model.extend({
   initialize: function(attributes) {
     this.idCode = attributes.id
     this.type = attributes.type
+    this.hasData = false
   },
 
   update: function() {
     App.Ajax.getStationData((function(data){
+      this.hasData = true
       this.set(data)
     }).bind(this), this.type, this.idCode)
   },
 
+  complexName: function() {
+    return this.type + "|" + this.idCode
+  },
+
   display: function() {
+    if (this.hasData === false) {
+      return {
+        loading: true
+      }
+    }
+
     var attributes = this.toJSON()
 
     switch(this.type) {
@@ -62,7 +74,7 @@ App.Models.Station = Backbone.Model.extend({
             }
           })
         }
-        
+
     }
   }
 

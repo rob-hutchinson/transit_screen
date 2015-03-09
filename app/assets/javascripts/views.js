@@ -25,7 +25,7 @@ App.Views.Station = Backbone.View.extend({
 App.Views.BikeshareStation = App.Views.Station.extend({
 
   render: function() {
-    this.$el.html( App.Templates.bikeshare(this.model) )
+    this.$el.html( App.Templates.bikeshare(this.model.display()) )
   }
 
 })
@@ -33,7 +33,7 @@ App.Views.BikeshareStation = App.Views.Station.extend({
 App.Views.RailStation = App.Views.Station.extend({
   
   render: function() {
-    this.$el.html( App.Templates.rail(this.model) )
+    this.$el.html( App.Templates.rail(this.model.display()) )
   }
 
 })
@@ -41,7 +41,7 @@ App.Views.RailStation = App.Views.Station.extend({
 App.Views.BusStation = App.Views.Station.extend({
   
   render: function() {
-    this.$el.html( App.Templates.bus(this.model) )
+    this.$el.html( App.Templates.bus(this.model.display()) )
   }
 
 })
