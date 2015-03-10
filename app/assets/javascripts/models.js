@@ -16,6 +16,9 @@ App.Models.Station = Backbone.Model.extend({
 
   update: function() {
     App.Ajax.getStationData((function(data){
+      if (_.isArray(data)) {
+        data = { Trains: data }
+      }
       this.hasData = true
       this.set(data)
     }).bind(this), this.type, this.idCode)

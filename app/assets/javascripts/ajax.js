@@ -1,5 +1,15 @@
 App.Ajax = {
 
+  getFavoriteStations: function(callback) {
+
+    $.ajax({
+      url: "/favorites",
+      method: "GET",
+      success: callback
+    })
+
+  },
+
   // Get a specific station's data  
   getStationData: function(callback, type, stationId) {
 
@@ -31,7 +41,7 @@ App.Ajax = {
   addStation: function(callback, type, stationId) {
 
     $.ajax({
-      url: "/add",
+      url: "/favorites",
       method: "POST",
       data: {
         type: type,
@@ -46,7 +56,7 @@ App.Ajax = {
   deleteStation: function(callback, type, stationId) {
 
     $.ajax({
-      url: "/delete",
+      url: "/favorites",
       method: "DELETE",
       data: {
         type: type,

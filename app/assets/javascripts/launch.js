@@ -25,7 +25,7 @@ var getNearbyStations = function() {
 
   App.Ajax.getNearbyStations(function(data){
     App.nearbyStationData.rail.load(data)
-  }, "rail", App.coordinates.latitude, App.coordinates.longitude, 1500)
+  }, "rail", App.coordinates.latitude, App.coordinates.longitude, 15000)
 
   App.Ajax.getNearbyStations(function(data){
     App.nearbyStationData.bus.load(data.Stops)
@@ -88,15 +88,6 @@ $(document).on("ready", function(){
     stationList: Handlebars.compile( $("#station-list-template").text() )
   }
 
-  // Obviously this needs to change and not be static
-  var favoriteStations = [
-    { type: "rail", id: "A01" },
-    { type: "bus", id: "4001062" },
-    { type: "bus", id: "6001231" },
-    { type: "bus", id: "1000543" },
-    { type: "bikeshare", id: "31002" }
-  ]
-
   App.nearbyStationData = {
     bikeshare: new App.Collections.Stations(),
     rail: new App.Collections.Stations(),
@@ -105,12 +96,23 @@ $(document).on("ready", function(){
 
   addLayoutViews()
 
-  App.stationData = new App.Collections.Stations(favoriteStations)
-  App.stationData.each(addView)
-  App.stationData.update()
+  App.Ajax.getFavoriteStations(function(data){
 
-  App.interval = setInterval(function(){
+    var favoriteStations = _.map(data, function(station){
+      return {
+        type: station.fav_type,
+        id: station.fav_id
+      }
+    })
+
+    App.stationData = new App.Collections.Stations(favoriteStations)
+    App.stationData.each(addView)
     App.stationData.update()
-  }, 60000)
+
+    App.interval = setInterval(function(){
+      App.stationData.update()
+    }, 60000)
+
+  })
 
 });

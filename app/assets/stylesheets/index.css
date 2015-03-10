@@ -21,7 +21,7 @@ body {
   font-size: 18px;
   width: 28%;
   margin: 20px 2.5%;
-  float: left;
+  display: inline-block;
   color: white;
   vertical-align: top;
   position: relative;
