@@ -15,5 +15,4 @@ class Paired_Stations
     end 
   end
 
-
 end

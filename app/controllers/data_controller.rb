@@ -1,6 +1,3 @@
-require 'datarequest'
-require 'paired_stations'
-
 class DataController < ApplicationController
 
   def show
@@ -25,6 +22,7 @@ class DataController < ApplicationController
         @data = Datarequest.send(type, id.first)
       end
     end
+    
     render json: @data.to_json
 
   end
