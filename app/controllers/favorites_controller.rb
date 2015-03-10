@@ -1,9 +1,22 @@
 class FavoritesController < ApplicationController
-  def new
-    # binding.pry
-    @fav = Favorite.create (fav_type: "BUS", fav_id: "23B", user_id: current_user)
+  def create
+    @fav = Favorite.create(params[:favorite])
+    @fav.save!
+    return @fav.to_json
   end
 
   def delete
+    @userFavs =  user_group
+    @userFavs.where("fav_type = ? AND fav_id = ?", params[:fav_type], params[:fav_id])
+    # return success/failure
+  end
+
+  def list
+    @favs = user_group
+    return @favs
+  end
+
+  def user_group
+    current_user.favorites
   end
 end

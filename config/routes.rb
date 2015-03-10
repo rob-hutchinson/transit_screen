@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'favorites/new'
-
-  get 'favorites/delete'
+  get  '/favorites' => 'favorites#list', as: 'favorites_list'
+  post '/favorites' => 'favorites#create', as: 'favorites_create'
+  delete '/favorites' => 'favorites#delete', as: 'favorites_delete'
+  
 
   devise_for :users
 
