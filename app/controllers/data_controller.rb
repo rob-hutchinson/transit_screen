@@ -1,5 +1,6 @@
-class DataController < ApplicationController
 require 'datarequest'
+
+class DataController < ApplicationController
 
   def show
     id = params[:id]
