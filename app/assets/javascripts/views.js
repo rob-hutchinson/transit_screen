@@ -12,26 +12,30 @@ App.Views.Station = Backbone.View.extend({
     this.render()
   },
 
-  render: function() {
-    // no-operation
-  },
-
   deleteStation: function() {
-    // TODO
+    delete App.stationData[this.model.complexName()]
+    this.model.destroy()
+    this.remove()
   }
 
 })
 
 App.Views.BikeshareStation = App.Views.Station.extend({
 
+  className: "bikeshare station",
+
   render: function() {
     this.$el.html( App.Templates.bikeshare(this.model.display()) )
+
+    this.$(".background").css("width", this.model.getWidth())
   }
 
 })
 
 App.Views.RailStation = App.Views.Station.extend({
   
+  className: "rail station",
+
   render: function() {
     this.$el.html( App.Templates.rail(this.model.display()) )
   }
@@ -40,6 +44,8 @@ App.Views.RailStation = App.Views.Station.extend({
 
 App.Views.BusStation = App.Views.Station.extend({
   
+  className: "bus station",
+
   render: function() {
     this.$el.html( App.Templates.bus(this.model.display()) )
   }

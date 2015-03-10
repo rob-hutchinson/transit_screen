@@ -56,9 +56,10 @@ $(document).on("ready", function(){
 
   // Obviously this needs to change and not be static
   var favoriteStations = [
-    { type: "rail", id: "C09" },
+    { type: "rail", id: "A01" },
     { type: "bus", id: "4001062" },
     { type: "bus", id: "6001231" },
+    { type: "bus", id: "1000543" },
     { type: "bikeshare", id: "31002" }
   ]
 

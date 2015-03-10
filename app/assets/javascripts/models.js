@@ -17,6 +17,21 @@ App.Models.Station = Backbone.Model.extend({
     return this.type + "|" + this.idCode
   },
 
+  getWidth: function() {
+    if (this.type !== "bikeshare") {
+      return 0
+    }
+
+    var bikes = (this.get("nbBikes") * 1)
+    var docks = (this.get("nbEmptyDocks") * 1)
+
+    if (bikes + docks > 0) {
+      return (bikes / (bikes + docks)) * 100 + "%"
+    }
+
+    return 0
+  },
+
   display: function() {
     if (this.hasData === false) {
       return {
