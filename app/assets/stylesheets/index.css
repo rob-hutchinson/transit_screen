@@ -4,5 +4,113 @@
   box-sizing: border-box;
   font-family: "Avenir";
   font-weight: 500;
+  -webkit-font-smoothing: antialiased;
 }
 
+body {
+  background: #333;
+}
+
+.view-container {
+  min-height: 100vh;
+  font-size: 0px;
+  clear:both;
+}
+
+.station {
+  font-size: 18px;
+  width: 28%;
+  margin: 20px 2.5%;
+  float: left;
+  color: white;
+  vertical-align: top;
+}
+
+.station .title {
+  font-size: 24px;
+  border-bottom: solid 1px white;
+  padding-bottom: 4px;
+}
+
+.station .info {
+  padding-top: 6px;
+}
+
+.station.rail .train, .station.bus .bus {
+  margin: 5px 0px;
+  line-height: 40px;
+}
+
+.train .line, .bus .route {
+  width: 15%;
+  margin-right: 5%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 21px;
+}
+
+.train .line.BL {
+  background: #1560bd;
+}
+.train .line.YL {
+  background: #fae600;
+  color: black;
+}
+.train .line.RD {
+  background: #ba0101;
+}
+.train .line.GR {
+  background: #228b22;
+}
+.train .line.OR {
+  background: #fa7814;
+}
+.train .line.SV {
+  background: #c7c4bf;
+  color: black;
+}
+
+.bus .route {
+  background: #7a58c1;
+}
+
+.train .destination, .bus .destination {
+  width: 60%;
+  display: inline-block;
+  vertical-align: top;
+  overflow-x: hidden;
+  scroll: none;
+  white-space: nowrap;
+}
+
+.train .time, .bus .time {
+  display: inline-block;
+  vertical-align: top;
+  width: 15%;
+  text-align: right;
+  font-size: 20px;
+}
+
+.station.bikeshare {
+  font-size: 0px;
+  position: relative;
+}
+
+.station.bikeshare .background {
+  height: 50px;
+  position: absolute;
+  background: #ba0101;
+  width: 0%;
+  z-index: 1;
+}
+
+.bikes, .docks {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  font-size: 28px;
+  z-index: 2;
+  position: relative;
+  line-height: 50px;
+}
