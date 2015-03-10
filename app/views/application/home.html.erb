@@ -1,7 +1,13 @@
+<div class="header-container" id="header-container"></div>
+<div class="overlay-container" id="overlay-container"></div>
 
 <div class="view-container" id="view-container"></div> 
 <script type="x-handlebars-template" id="bikeshare-template">
+  {{#if spotlight }}
+  <div class="star"></div>
+  {{else }}
   <div class="close"></div>
+  {{/if }}
   <div class="title">{{ title }}</div>
   <div class="info">
     <div class="background"></div>
@@ -12,7 +18,11 @@
 </script>
 
 <script type="x-handlebars-template" id="metrorail-template">
+  {{#if spotlight }}
+  <div class="star"></div>
+  {{else }}
   <div class="close"></div>
+  {{/if }}
   <div class="title">{{ title }}</div>
   <div class="info">
     {{#each trains }}
@@ -26,7 +36,11 @@
 </script>
 
 <script type="x-handlebars-template" id="metrobus-template">
+  {{#if spotlight }}
+  <div class="star"></div>
+  {{else }}
   <div class="close"></div>
+  {{/if }}
   <div class="title">{{ title }}</div>
   <div class="info">
     {{#each buses }}
@@ -39,3 +53,34 @@
   </div>
 </script>
 
+<script type="x-handlebars-template" id="header-template">
+  <div class="add-button">
+    Add Stations
+  </div>
+</script>
+
+<script type="x-handlebars-template" id="overlay-template">
+  <div class="overlay-background"></div>
+  <div class="overlay-content">
+    <div class="lists">
+      Metrorail:
+      <div class="list-rail list-container"></div>
+
+      Metrobus:
+      <div class="list-bus list-container"></div>
+
+      Capital Bikeshare:
+      <div class="list-bikeshare list-container"></div>
+    </div>
+
+    <div class="list-spotlight"></div>
+  </div>
+</script>
+
+<script type="x-handlebars-template" id="station-list-template">
+  {{#each this}}
+  <div class="list-item" data-type="{{type}}" data-id="{{id}}">
+    <div class="title">{{title}}</div>
+  </div>
+  {{/each}}
+</script>
