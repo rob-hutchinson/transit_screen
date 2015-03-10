@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
   def create
     @fav = Favorite.create(params[:favorite])
+    @fav.update user_id: current_user.id
     @fav.save!
     render json: @fav.to_json
   end
