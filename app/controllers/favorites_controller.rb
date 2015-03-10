@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   def create
     @fav = Favorite.create(params[:favorite])
     @fav.save!
-    return @fav.to_json
+    render json: @fav.to_json
   end
 
   def delete
@@ -13,7 +13,7 @@ class FavoritesController < ApplicationController
 
   def list
     @favs = user_group
-    return @favs
+    render json: @favs.to_json
   end
 
   def user_group
