@@ -7,8 +7,8 @@ class DataController < ApplicationController
     overlapping_stations = Paired_Stations.new
     @data = []
 
-    if overlapping_stations.pairs.has_key?(id.first) || overlapping_stations.pairs.has_value?(id.first)
-      id << overlapping_stations.find(id.first)
+    if overlapping_stations.pairs.has_key?(id.first.downcase) || overlapping_stations.pairs.has_value?(id.first.downcase)
+      id << overlapping_stations.find(id.first.downcase)
     end
 
     if ["rail", "bus", "bikeshare"].include? (type)
