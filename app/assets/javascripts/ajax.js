@@ -12,13 +12,14 @@ App.Ajax = {
   },
 
   // Get the nearby stations for a type, passing in lat/long
-  getNearbyStations: function(callback, type, latitude, longitude) {
+  getNearbyStations: function(callback, type, latitude, longitude, range) {
 
     $.ajax({
       url: "/nearby/" + type,
       data: {
         latitude: latitude,
-        longitude: longitude
+        longitude: longitude,
+        range: range
       },
       method: "GET",
       success: callback

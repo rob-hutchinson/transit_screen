@@ -6,6 +6,14 @@ App.Models.Station = Backbone.Model.extend({
     this.hasData = false
   },
 
+  favorite: function() {
+    App.Ajax.addStation((function(){}).bind(this), this.type, this.idCode)
+  },
+
+  unfavorite: function() {
+    App.Ajax.deleteStation((function(){}).bind(this), this.type, this.idCode)
+  },
+
   update: function() {
     App.Ajax.getStationData((function(data){
       this.hasData = true
@@ -45,6 +53,7 @@ App.Models.Station = Backbone.Model.extend({
       case "bikeshare":
         
         return {
+          spotlight: !!attributes.spotlight,
           title: attributes.name,
           bikes: attributes.nbBikes,
           docks: attributes.nbEmptyDocks
@@ -61,6 +70,7 @@ App.Models.Station = Backbone.Model.extend({
 
         return {
           title: _.first(attributes.Trains).LocationName,
+          spotlight: !!attributes.spotlight,
           trains: _.map(attributes.Trains, function(train){
             return {
               line: train.Line,
@@ -81,6 +91,7 @@ App.Models.Station = Backbone.Model.extend({
 
         return {
           title: attributes.StopName,
+          spotlight: !!attributes.spotlight,
           buses: _.map(_.first(attributes.Predictions, 6), function(bus){
             return {
               route: bus.RouteID,
@@ -103,6 +114,11 @@ App.Collections.Stations = Backbone.Collection.extend({
     this.each(function(model){
       model.update()
     })
+  },
+
+  load: function(data) {
+    this.add(data)
+    this.trigger("loaded")
   }
 
 })
