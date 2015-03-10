@@ -7,7 +7,8 @@ class FavoritesController < ApplicationController
 
   def delete
     @userFavs =  user_group
-    @userFavs.where("fav_type = ? AND fav_id = ?", params[:fav_type], params[:fav_id])
+    target = @userFavs.where("fav_type = ? AND fav_id = ?", params[:fav_type], params[:fav_id])
+    target.destroy
     # return success/failure
   end
 
