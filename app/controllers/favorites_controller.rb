@@ -1,9 +1,11 @@
 class FavoritesController < ApplicationController
   def create
-    @fav = Favorite.create(fav_type: params[:type], fav_id: params[:id])
-    @fav.update user_id: current_user.id
-    @fav.save!
-    render json: @fav.to_json
+    unless user_group.any? && user_group.pluck(:fav_id).include?(params[:id])  
+      @fav = Favorite.create(fav_type: params[:type], fav_id: params[:id])
+      @fav.update user_id: current_user.id
+      @fav.save!
+      render json: @fav.to_json
+    end
   end
 
   def delete

@@ -17,7 +17,6 @@ gem 'haversine_distance'
 
 group :development, :test do
 
-  gem 'spring'
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rspec'
